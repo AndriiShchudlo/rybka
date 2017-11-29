@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+
+
+<body class="home">
+	<!-- Fixed navbar -->
+{% block content %}
+    <header id="head">
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-8" style="padding-top: 24ch">
+                    <h1 class="lead">Вітаємо Вас, в мережі рибаків</h1>
+                </div>
+{#                 <div class="col-sm-1"></div>#}
+                <div class="col-sm-4" style="padding-top: 17ch">
+                    <form method="post" action="/loginSys/">{% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="Введіть email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Введіть пароль">
+                        </div>
+
+                        {%if login_error%}
+                            <div>
+                                <label class="login_error">{{login_error}}</label>
+                            </div>
+                        {%endif%}
+                        <br>
+                        <button type="submit" class="btn btn-default">Увійти</button>
+                    </form>
+                    <br>
+                    <div>
+                        <form method="post" action="/loginSys/">{% csrf_token %}
+                            <div  id="block2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="ім'я">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="Прізвище">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="+38 ">
+                                </div>
+                                <button type="submit" onclick="switchDisplay('block_2')" class="btn btn-default">Реєстрація</button>
+                            </div>
+                        </form>
+                        <button id="first_registration" class="btn btn-default" onclick="registrationBlock()">Реєстрація</button>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</header>
+
+    <div class="container text-center">
+		<br> <br>
+		<h2 class="thin">Система для об'єднання всіх рибаків</h2>
+		<p class="text-muted">
+            Найбільшими завжди бувають ті риби, що зірвалися з гачка.<br>
+        </p>
+	</div>
+    <!-- Highlights - jumbotron -->
+	<div class="jumbotron top-space">
+		<div class="container">
+			<h3 class="text-center thin">Детальніше про систему Rybka</h3>
+			<div class="row">
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-group fa-5"></i>Соцмережа рибаків</h4></div>
+					<div class="h-body text-center">
+						<p>Наша команда створила для вас, риболовну соцмережу. Тут ви зможете знайти своїх друзів, переглянути їхні звіти з рибалок. Додати свої звіти. Спілкуватися</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-envelope-o fa-5"></i>Форум</h4></div>
+					<div class="h-body text-center">
+						<p>В нашій системі створено форум. Де можна створювати зареєстрованим користувачам свої теми, обговорювати різноманітні питання чи організовувати різного роду події</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-shopping-cart fa-5"></i>Барахолка</h4></div>
+					<div class="h-body text-center">
+						<p>Користувач, має можливість виставляти свої речі на продаж. В нашій системі покупки стають більш надійні ніж на інших платформах. Так як ви маєте змогу зайти на сторінку користувача, подивитись його фото, звіти з рибалок, почитати відгуки інших покупців.</p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 highlight">
+					<div class="h-caption"><h4><i class="fa fa-star-o fa-5"></i>Водойми</h4></div>
+					<div class="h-body text-center">
+						<p>В даному розділі користувачі можуть додавати водойми, або переглядати існуючі. Створювати в них звіти, обговорювати та критикувати</p>
+					</div>
+				</div>
+			</div> <!-- /row  -->
+
+		</div>
+	</div>
+     <!-- Highlights - jumbotron -->
+{% endblock %}
+
+
+</body>
