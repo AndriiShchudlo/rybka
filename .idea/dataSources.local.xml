@@ -8,7 +8,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>andrii</user-name>
-      <resolve-scope>my_project_db:public,andrii</resolve-scope>
+      <resolve-scope>my_project_db:andrii,public</resolve-scope>
     </data-source>
   </component>
 </project>

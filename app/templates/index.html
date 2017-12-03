@@ -11,14 +11,17 @@
                 <div class="col-sm-8" style="padding-top: 24ch">
                     <h1 class="lead">Вітаємо Вас, в мережі рибаків</h1>
                 </div>
-{#                 <div class="col-sm-1"></div>#}
                 <div class="col-sm-4" style="padding-top: 17ch">
-                    <form method="post" action="/loginSys/">{% csrf_token %}
+                    <form id="login_form"  method="post" action="/login">{% csrf_token %}
                         <div class="form-group">
-                            <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="Введіть email">
+                            <input required oninvalid="setCustomValidity('Введіть свій email')"
+                                   oninput="setCustomValidity('')" type="email" class="form-control"
+                                   id="user_login" name="user_login" placeholder="Введіть email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Введіть пароль">
+                            <input required oninvalid="setCustomValidity('Введіть пароль')"
+                                   oninput="setCustomValidity('')"  type="password" class="form-control"
+                                   id="pass_login" name="pass_login" placeholder="Введіть пароль" minlength="8">
                         </div>
 
                         {%if login_error%}
@@ -31,21 +34,39 @@
                     </form>
                     <br>
                     <div>
-                        <form method="post" action="/loginSys/">{% csrf_token %}
+                        <form id="registration_form" method="post" action="/registry">{% csrf_token %}
+                            {% if not error %}
                             <div  id="block2">
+                            {% endif %}
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="ім'я">
+                                    <input required oninvalid="setCustomValidity('Заповніть це поле')"
+                                           oninput="setCustomValidity('')" type="text" class="form-control"
+                                           id="first_name_reg" name="first_name_reg" placeholder="Ім'я">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="Прізвище">
+                                    <input required oninvalid="setCustomValidity('Введіть своє прізвище')"
+                                           oninput="setCustomValidity('')" type="text" class="form-control"
+                                           id="last_name_reg" name="last_name_reg" placeholder="Прізвище">
+                                </div>
+                                {% if error %}
+                                    <label style="color:white">Користувач "{{ email }}" уже існує!</label>
+                                {% endif %}
+                                <div class="form-group">
+                                    <input required oninvalid="setCustomValidity('Введіть правильну пошту')"
+                                           oninput="setCustomValidity('')"type="email" class="form-control"
+                                           id="email_reg" name="email_reg" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="email">
+                                    <input required oninvalid="setCustomValidity('Введіть пароль')"
+                                           oninput="setCustomValidity('')"type="password" class="form-control"
+                                           id="pass1_reg" name="pass1_reg" placeholder="Пароль" minlength="8">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="inputUser" name="inputUser" placeholder="+38 ">
+                                    <input type="password" class="form-control"
+                                           id="pass2_reg" name="pass2_reg" placeholder="Повторіть пароль" minlength="8">
                                 </div>
-                                <button type="submit" onclick="switchDisplay('block_2')" class="btn btn-default">Реєстрація</button>
+
+                                <button type="submit" class="btn btn-default">Реєстрація</button>
                             </div>
                         </form>
                         <button id="first_registration" class="btn btn-default" onclick="registrationBlock()">Реєстрація</button>

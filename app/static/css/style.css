@@ -2,4 +2,16 @@
     /*width: 7ch;*/
     /*height: 6ch;*/
 /*}*/
-    #block2{display:none;}
+#block2{display:none;}
+
+input:valid {
+  border-color: green;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+.login_error{
+  color: white;
+}
